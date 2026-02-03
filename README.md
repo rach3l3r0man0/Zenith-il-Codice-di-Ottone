@@ -1,4 +1,4 @@
-# [Zenith: il Codice di Ottone]
+# Zenith: il Codice di Ottone
 
 Final project for the **Web Design** course - BSc in Computer Engineering.
 
