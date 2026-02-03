@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Impostazioni di base della pagina -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../img/favicon.ico" type="image/ico">
+        <title> Classifica giocatori </title>
+        
+		<!-- Collegamento al foglio di stile per la classifica -->
+		<link rel="stylesheet" href="../css/ranking.css">
+		
+		<!-- Script per recuperare e popolare i dati della classifica -->
+		<script src="../js/ranking.js"></script>
+    </head>
+    <body>
+        <!-- Barra di navigazione in alto con link alle sezioni principali -->
+        <div id="barraNavigazione">
+            <a href="../index.html">Home</a>
+            <a href="signin.html">Accedi</a>
+            <a href="register.html">Registrati</a>
+            <a href="documentation.html">Come si gioca?</a>
+        </div>
+
+        <!-- Area contenente la tabella dei punteggi -->
+        <div id="tableArea">
+            <table>
+                <!-- Intestazione della tabella -->
+                <tr id="1">
+                    <th>N°</th> <th>Giocatore</th> <th>Punteggio</th> <th>Data</th>
+                </tr>
+                
+                <!-- Righe della classifica (popolate successivamente via JS) -->    
+                <tr id="2">
+                    <td>1</td> <td></td> <td></td> <td></td>
+                </tr>
+
+                <tr id="3">
+                    <td>2</td> <td></td> <td></td> <td></td>
+                </tr>
+
+                <tr id="4">
+                    <td>3</td> <td></td> <td></td> <td></td>
+                </tr>
+
+                <tr id="5">
+                    <td>4</td> <td></td> <td></td> <td></td>
+                </tr>
+
+                <tr id="6">
+                    <td>5</td> <td></td> <td></td> <td></td>
+                </tr>
+
+                <tr id="7">
+                    <td>6</td> <td></td> <td></td> <td></td>
+                </tr>
+
+                <tr id="8">
+                    <td>7</td> <td></td> <td></td> <td></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

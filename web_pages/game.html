@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Impostazioni di base della pagina -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../img/favicon.ico" type="image/ico">
+        <title> Zenith: il codice di ottone </title>
+        
+		<!-- Collegamento ai fogli di stile globali e specifici per livello -->
+		<link rel="stylesheet" href="../css/game.css">
+        <link rel="stylesheet" href="../css/level/firstLevel.css">
+        <link rel="stylesheet" href="../css/level/secondLevel.css">
+        <link rel="stylesheet" href="../css/level/thirdLevel.css">
+		
+		<!-- Script di gioco principale e logica specifica per livello -->
+		<script src="../js/game.js"></script>
+        <script src="../js/logout.js"></script>
+        <script src="../js/level/firstLevel.js"></script>
+        <script src="../js/level/secondLevel.js"></script>
+        <script src="../js/level/thirdLevel.js"></script>
+        <script src="../js/endGame.js"></script>
+	</head>
+    
+	<body>
+        <!-- Overlay nero per transizioni -->
+        <div id="sfondoNero" class="nascosto overlayDissolvenza">
+            <!-- Area di conferma post-game -->
+            <div id="container" class="nascosto">
+                <h2>Vuoi iniziare una nuova partita?</h2>
+
+                <div id="areaBottoni">
+                    <button id="bottoneSi" class="bottoneGioco">SI</button>
+                    <button id="bottoneNo" class="bottoneGioco">NO</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenitore principale dell'area di gioco -->
+        <div id="contenitoreGioco">
+            <!-- Schermata introduttiva con titolo e diario iniziale -->
+            <div id="schermataIntro">
+                <div id="contenutoIntro">
+                    <h1 id="titoloGioco">ZENITH</h1>
+
+                    <div id="testoIntro"></div>
+
+                    <button id="bottoneAvvio" class="bottoneGioco nascosto">INIZIALIZZA SISTEMA</button>
+                </div>
+            </div>
+
+            <!-- Pulsante per aprire l'inventario -->
+            <div id="inventario" class="nascosto"></div>
+
+            <!-- Area espansa dell'inventario -->
+            <div id="areaInventario" class="nascosto">
+                <h2>INVENTARIO</h2>
+                <p id="testoInventario">Inventario vuoto</p>
+                <button id="tornaIndietro">⭠</button>
+            </div>
+
+            <!-- Contenitore per i livelli di gioco effettivi -->
+            <div id='stratoGioco' class="nascosto">
+                
+                <!-- LIVELLO 1: La Serratura -->
+                <div id="livello1" class="livello nascosto">
+                    <div id="areaCliccabile1"></div>
+
+                    <div id="contenitorePuzzle" class="nascosto">
+                        <div id="contenitoreAnticaSerratura"></div>
+
+                        <button id="bottoneLivello1" class="bottoneGioco">SBLOCCA MECCANISMO</button>
+
+                        <button id="bottoneRitorno1" class="nascosto">⭠</button>
+                    </div>
+                </div>
+
+                <!-- LIVELLO 2: Sala Caldaie -->
+                <div id="livello2" class="livello nascosto">
+                    <div id="areaCliccabile2"></div>
+                    
+                    <div id="salaCaldaie" class="nascosto">
+                        <button id="tastoAccensione" class="nascosto">ON</button>
+                        
+                        <div id="contenitoreSalaCaldaie" class="nascosto">
+
+                            <div id="contenitoreManometro">
+                                <div id="quadranteManometro">
+                                    <div id="dettagliManometro"></div>
+                                    <div id="lancettaManometro"></div>
+                                    <div id="pernoManometro"></div>
+                                </div>
+                                
+                                <div id="statistichePressione">
+                                    <p>TARGET: <span id="valoreTarget">--</span> BAR</p>
+                                    <div id="schermoPressione">
+                                        <span id="valoreAttuale">0.0</span> BAR
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="grigliaValvole"></div>
+
+                            <button id="bottoneVapore">ATTIVA VAPORE</button>
+                        </div>
+
+                        <button id="bottoneRitorno2" class="nascosto">⭠</button>
+                    </div>
+                </div>
+
+                <!-- LIVELLO 3: Il Nucleo -->
+                <div id="livello3" class="livello nascosto">
+                    <div id="areaCliccabile3"></div>
+
+                    <div id="nucleoTorre" class="nascosto">
+                        <div id="contenitoreNucleoTorre" class="nascosto">
+                            
+                            <div id="grigliaIngranaggi"></div>
+
+                            <div id="infoStato">
+                                <div class="indicatore" id="indFonte">FONTE</div>
+
+                                <div class="freccia">➡</div>
+
+                                <div class="indicatore" id="indTarget">NUCLEO</div>
+                            </div>
+
+                            <div id="contatoreIngranaggi">INGRANAGGI: <span id="numIngranaggi">0</span></div>
+
+                            <button id="bottoneAttivaNucleo">AVVIA SISTEMA</button>
+
+                            <p id="messaggioErroreNucleo" class="nascosto">ERRORE: CONFLITTO MECCANICO RILEVATO</p>
+                        </div>
+                    </div>
+                        
+                    <button id="bottoneRitorno3" class="nascosto">⭠</button>
+                </div> 
+            </div>
+        </div>
+
+        <!-- Layer per i dialoghi -->
+        <div id="stratoInterfaccia">
+            <div id="finestraDialogo" class="nascosto">
+                <div id="contenutoDialogo">
+                    <h3 id="parlanteDialogo">Sconosciuto</h3>
+                    <p id="testoDialogo"></p>
+                    <button id="bottoneAvantiDialogo">Avanti ▶</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottone di logout -->
+        <div id="barraSuperiore">
+             <button id="bottoneLogout" class="bottoneGioco">Logout</button>
+        </div>
+    </body>
+</html>

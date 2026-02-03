@@ -1,0 +1,20 @@
+#container{
+    text-align: center;
+    color: #cfbe86;
+    font-family: 'Courier New', monospace;
+    width: 100%;
+}
+
+#sfondoNero.sfondoAttivo {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+#areaBottoni{
+    display: flex;
+    gap: 5%;
+    justify-content: center;
+    width: 100%;
+}

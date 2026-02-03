@@ -1,0 +1,461 @@
+/* Sfondo principale per il livello della sala caldaie */
+.sfondoLivello2{
+    background-image: url("../../img/gamePage/level2/boilerRoomBackground.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+
+/* Sfondo alternativo mostrato quando il livello è completato */
+.sfondoLivello2Completato{
+    background-image: url("../../img/gamePage/level2/boilerRoomCompleted.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+
+/* Area cliccabile per la porta (interazione finale) */
+#areaPorta1{
+    cursor: pointer;
+    position: absolute;
+    
+    width: 10%;
+    height: 4%;
+    right: 45%;
+    bottom: 0%;
+    z-index: 10;
+    
+    font-size: 1rem;
+    color: #cfbe86;
+    text-shadow: 0.06rem  0.06rem 0 #3e2723, 
+                -0.06rem -0.06rem 0 #3e2723, 
+                 0.12rem  0.12rem 0 #3e2723; 
+    text-align: center;
+}
+
+/* Area cliccabile per la scala */
+#areaScala{
+    cursor: pointer;
+    position: absolute;
+
+    width: 24%;
+    height: 96%;
+    top: 0%;
+    right: 13%;
+    z-index: 10;
+
+    /*background-color: rgba(255, 0, 0, 0.3);       Per il debug*/
+    clip-path: polygon(62% 0%, 97% 0%, 40% 100%, 8% 92%);
+}
+
+/* Area cliccabile per la lavagna con le istruzioni */
+#areaLavagna{
+    cursor: pointer;
+    position: absolute;
+
+    width: 14%;
+    height: 35%;
+    top: 32%;
+    left: 12%;
+    z-index: 10;
+
+    /*background-color: rgba(255, 0, 0, 0.3);       Per il debug*/
+    clip-path: polygon(0% 0%, 100% 18%, 100% 90%, 0% 100%);
+}
+
+/* Modale che mostra il contenuto della lavagna */
+#dialogoLavagna{
+    display: none;
+    position: fixed;
+   
+    background-image: url("../../img/gamePage/level2/blackboard.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 35rem 30rem;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    border: none;
+}
+
+/* Area cliccabile per interagire con il pannello della caldaia */
+#areaCaldaia{
+    cursor: pointer;
+    position: absolute;
+
+    width: 5%;
+    height: 3%;
+    top: 52.2%;
+    left: 47.7%;
+    z-index: 10;
+    
+    /*outline: 2px solid orange;        Per il debug*/
+}
+
+/* Bottone per tornare indietro dalla vista puzzle */
+#bottoneRitorno2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+
+    background: #8b6c42;
+    
+    width: 3rem;
+    height: 3rem;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 20;
+
+    font-size: 1.5rem;
+    color: #cfbe86;
+
+    border: 1px solid #3e2723;
+    border-radius: 50%;
+}
+
+#areaCliccabile2{
+    width: 100%;
+    height: 100%;
+}
+
+/* Tasto fisico per attivare/iniziare il puzzle della caldaia */
+#tastoAccensione{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    pointer-events: auto;
+
+    background-color: #8b6c42;
+    box-shadow: 0 0.4rem 0 #3e2723, 0 0.6rem 0.6rem rgba(0,0,0,0.4);
+
+    width: 4rem;
+    height: 4rem;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 101;
+    
+    font-family: inherit;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #cfbe86;
+    
+    border: 1px solid #5d4037;
+    border-radius: 50%;
+    
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+/* Effetto di pressione del tasto accensione */
+#tastoAccensione:active{
+    box-shadow: 0 0 0 #3e2723, inset 0 0.2rem 0.2rem rgba(0,0,0,0.3);
+
+    transform: translateY(0.4rem);
+}
+
+/* Contenitore per la scena della sala caldaie */
+#salaCaldaie{
+    position: absolute;
+    pointer-events: none;
+
+    background-color: black;
+
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100; 
+}
+
+#salaCaldaie > *{
+    pointer-events: auto;
+}
+
+/* =========================================
+   SALA CALDAIE - STILI DEL PUZZLE
+   ========================================= */
+
+/* Pannello principale del puzzle delle valvole */
+#contenitoreSalaCaldaie{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+
+    background: radial-gradient(circle, #2a2a2a 0%, #1a1a1a 100%);
+    box-shadow: inset 0 0 5rem #000, 0 0 2rem #000;
+    
+    width: 90%;
+    height: 90%;
+    padding: 1rem;
+    top: 50%;
+    left: 50%;
+    z-index: 102; 
+    
+    border: 0.4rem solid #5d4037;
+    border-radius: 1rem;
+    
+    transform: translate(-50%, -50%);
+}
+
+/* --- Manometro --- */
+#contenitoreManometro{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    gap: 2rem;
+}
+
+/* Quadrante circolare del manometro */
+#quadranteManometro{
+    position: relative;
+
+    background: radial-gradient(#e0e0e0, #bdbdbd);
+    box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+
+    width: 10rem;
+    height: 10rem;
+    
+    border: 0.5rem solid #4caf50; 
+    border-radius: 50%;
+}
+
+/* Elemento centrale del manometro */
+#pernoManometro{
+    position: absolute;
+
+    background: #424242;
+
+    width: 1rem;
+    height: 1rem;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+/* Lancetta rossa che indica la pressione */
+#lancettaManometro{
+    position: absolute;
+
+    background: red;
+
+    width: 4.5rem; 
+    height: 0.3rem;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    
+    transition: transform 0.5s cubic-bezier(0.4, 2.5, 0.6, 0.8);
+    transform: rotate(0deg); 
+    transform-origin: 0% 50%;
+}
+
+/* Decorazione interna del manometro */
+#dettagliManometro{
+    position: absolute;
+
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+
+    border: 1px dashed #757575;
+    border-radius: 50%;
+}
+
+/* --- Display dei valori --- */
+
+/* Pannello digitale per i valori numerici */
+#displayValori{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    background: #000;
+    box-shadow: 0 0 1rem #000;
+
+    padding: 1rem;
+    gap: 0.5rem;
+    
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    color: #cfbe86;
+    
+    border: 2px solid #5d4037;
+    border-radius: 0.5rem;
+}
+
+#displayValori > div{
+    display: flex;
+
+    gap: 1rem;
+}
+
+#valoreTarget{
+    font-weight: bold;
+    color: #4caf50;
+}
+
+#valoreAttuale{ 
+    font-weight: bold;
+    color: #cfbe86;
+
+    transition: color 0.3s;
+}
+
+/* --- Griglia Valvole --- */
+
+/* Griglia che ospita le varie valvole interagibili */
+#grigliaValvole{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    width: 90%;
+    max-width: 40rem;
+    gap: 1rem;
+}
+
+/* Stile base della singola valvola */
+.valvola{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+
+    background-color: #3e2723;
+    box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.5);
+
+    width: 6rem;
+    height: 6rem;
+
+    border: 0.2rem solid #5d4037;
+    border-radius: 50%;
+
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.3s;
+}
+
+/* Effetto hover sulla valvola */
+.valvola:hover{
+    background-color: #4e342e;
+
+    transform: translateY(-0.1rem);
+}
+
+/* Effetto click sulla valvola */
+.valvola:active{
+    box-shadow: 0 0.1rem 0.2rem rgba(0,0,0,0.5);
+
+    transform: translateY(0.1rem);
+}
+
+/* Stile valvola attiva (premuta/selezionata) */
+.valvola.attivo{
+    background-color: #ff9800; /* Accesa */
+    box-shadow: inset 0 0 1rem #bf360c, 0 0 1rem #ff9800;
+
+    font-weight: bold;
+    color: #3e2723;
+
+    border-color: #e65100;
+}
+
+/* Decorazione interna valvola (la "maniglia") - parte 1 */
+.valvola::after{
+    position: absolute;
+    pointer-events: none;
+    content: '';
+
+    background: #8d6e63;
+
+    width: 80%;
+    height: 20%;
+    
+    border-radius: 0.2rem;
+
+    transform: rotate(45deg);   
+}
+/* Decorazione interna valvola (la "maniglia") - parte 2 */
+.valvola::before{
+    position: absolute;
+    pointer-events: none;
+    content: '';
+
+    background: #8d6e63;
+
+    width: 80%;
+    height: 20%;
+    
+    border-radius: 0.2rem;
+
+    transform: rotate(-45deg);
+}
+/* Etichetta numerica della valvola */
+.valvola span{
+    position: relative;
+
+    background: rgba(0,0,0,0.6);
+
+    padding: 0.2rem 0.4rem;
+    z-index: 5; /* Testo sopra la decorazione */
+    
+    font-size: 0.9rem;
+    color: #fff;
+
+    border-radius: 0.3rem;
+}
+
+
+/* --- Bottone Controllo Vapore --- */
+
+/* Bottone per sfogare il vapore (azione) */
+#bottoneVapore{
+    cursor: pointer;
+
+    background-color: #3e2723;
+    box-shadow: 0 0.4rem 0 #281a16;
+
+    margin-top: 1rem;
+    padding: 1rem 3rem;
+
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #cfbe86;
+    text-transform: uppercase;
+
+    border: 0.2rem solid #8b6c42;
+    border-radius: 0.5rem;
+
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.3s;
+}
+
+#bottoneVapore:hover{
+    background-color: #4e342e;
+}
+
+#bottoneVapore:active{
+    box-shadow: 0 0.1rem 0 #281a16;
+
+    transform: translateY(0.3rem);
+}

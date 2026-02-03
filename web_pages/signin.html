@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Impostazioni di base della pagina -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../img/favicon.ico" type="image/ico">
+        <title>Accedi</title>
+        
+		<!-- Collegamento al foglio di stile per la pagina di accesso -->
+		<link rel="stylesheet" href="../css/access.css">
+		
+		<!-- Script per gestire la logica di login -->
+		<script src="../js/signin.js"></script>
+	</head>
+    
+	<body>
+        <!-- Barra di navigazione superiore con link alla documentazione -->
+        <div id="barraNavigazione">
+            <a id="linkDocumentazione" href="documentation.html"></a>
+        </div>
+
+        <!-- Area principale contenente il form di login -->
+        <div id='principalArea'>
+            <h1>ACCEDI</h1>
+            
+            <main>
+                <form>
+                    <!-- Campo Username -->
+                    <label for="usrIn">Inserisci il tuo username:</label>
+                    <input id="usrIn" name="usrIn" type="text" placeholder="Es: username" pattern="^.{8,20}$" required>
+
+                    <!-- Campo Password -->
+                    <label for="pswIn">Inserisci la password:</label>
+                    <input id="pswIn" name="pswIn" type="password" placeholder ="********" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$" required>
+
+                    <!-- Bottone di invio form -->
+                    <input id="accessButton" type="submit" value="Accedi">
+                </form>
+            </main>
+
+            <!-- Area link secondari -->
+            <div id="linkArea">
+                <a id="homeButton" href="../index.html">Torna alla Home</a>
+
+                <div id="accessArea">
+                    <span id="testoRegistrazione">Non hai un account?</span>
+
+                    <a id="linkRegistrazione" href="../web_pages/register.html">Registrati</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Finestra di dialogo personalizzata per messaggi di errore/info (nascosta di default) -->
+        <div id="dialogArea" class="nascosto">
+            <p id="dialogMessage"></p>
+            <button id="dialogButton">OK</button>
+        </div>
+
+        <!-- Finestra di dialogo per il caricamento (nascosta di default) -->
+        <div id="caricamentoArea" class="nascosto">Accesso in corso...</div>
+    </body>
+</html>

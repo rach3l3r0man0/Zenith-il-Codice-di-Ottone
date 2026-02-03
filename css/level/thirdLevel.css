@@ -1,0 +1,282 @@
+/* Sfondo generico della stanza per il terzo livello (Il Nucleo) */
+.sfondoLivello3 {
+    background-image: url("../../img/gamePage/level3/background.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+/* Sfondo specifico quando si interagisce con il baule */
+.sfondoBaule {
+    background-image: url("../../img/gamePage/level3/chestBackground.png"); 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+
+/* Area cliccabile per la botola segreta */
+#areaBotola{
+    cursor: pointer;
+    position: absolute;
+
+    width: 41%;
+    height: 27%;
+    top: 70%;
+    right: 0%;    
+    z-index: 10;
+
+    /*background-color: rgba(255, 0, 0, 0.3);       Per il debug*/
+    clip-path: polygon(0% 58%, 52% 31%, 100% 51%, 100% 55%, 52% 100%);
+}
+
+/* Area cliccabile per interagire con il baule */
+#areaBaule{
+    cursor: pointer;
+    position: absolute;
+
+    width: 30%;
+    height: 35%;
+    top: 43%;
+    left: 30%;
+    z-index: 10;
+
+    /*background-color: rgba(0, 255, 0, 0.3);       Per il debug*/
+    clip-path: polygon(5% 48%, 70% 44%, 98% 50%, 98% 89%, 27% 100%, 5% 85%);
+}
+
+/* Contenitore principale per il puzzle interno al baule */
+#nucleoTorre {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+#contenitoreNucleoTorre {
+    position: relative;
+
+    background: transparent;
+
+    width: 100%;
+    height: 100%;
+}
+
+/* Griglia su cui posizionare gli ingranaggi nel baule */
+#grigliaIngranaggi {
+    display: grid;
+    /* 6 colonne x 5 righe */
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    position: absolute;
+
+    box-sizing: border-box;
+    
+    width: 78%; 
+    height: 67%;
+    margin: 0;
+    padding: 1rem;
+    gap: 0.5rem;
+    top: 18%;  
+    left: 11%;
+    z-index: 101;
+}
+
+/* Stile della singola cella della griglia */
+.cellaGriglia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+
+    border: 1px dashed rgba(207, 190, 134, 0.1); 
+    border-radius: 50%;
+
+    transition: background-color 0.2s;
+}
+
+/* Effetto hover sulla cella della griglia */
+.cellaGriglia:hover{
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(207, 190, 134, 0.2);
+}
+
+/* Stile base per gli ingranaggi */
+.ingranaggio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    background-image: url("../../img/gamePage/level3/gearBackground.png"); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.8);
+
+    width: 95%;
+    height: 95%;
+    z-index: 99;
+
+    border-radius: 50%;
+    
+    transition: transform 0.3s ease-out;
+}
+
+/* Stile per ingranaggio bloccato (non spostabile) */
+.bloccato{
+    background: radial-gradient(#b71c1c, #330000) !important;
+    box-shadow: 0 0 20px red;
+
+    border: 2px solid red !important;
+
+    transform: scale(0.9);
+    animation: none !important;
+}
+
+/* Keyframes per la rotazione oraria degli ingranaggi */
+@keyframes rotazioneOraria{ 
+    from{ 
+        transform: rotate(0deg); 
+    }
+    to{ 
+        transform: rotate(360deg); 
+    } 
+}
+
+/* Keyframes per la rotazione antioraria */
+@keyframes rotazioneAntiOraria{ 
+    from{ 
+        transform: rotate(360deg); 
+    } 
+    to{ 
+        transform: rotate(0deg); 
+    } 
+}
+
+/* Classi di utilità per applicare le animazioni di rotazione */
+.ruota-cw{ 
+    animation: rotazioneOraria 4s linear infinite; 
+}
+
+.ruota-ccw{ 
+    animation: rotazioneAntiOraria 4s linear infinite; 
+}
+
+/* Pannello di controllo inferiore contenente pulsanti e feedback */
+#pannelloControlloNucleo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(62, 39, 35, 0.9), rgba(0,0,0,0));
+
+    width: 60%;
+    padding: 1rem;
+    gap: 2rem;
+    bottom: 3%;
+    left: 50%;
+    z-index: 200;
+    
+    border-top: 1px solid #8b6c42;
+    border-bottom: 1px solid #8b6c42;
+
+    transform: translateX(-50%);
+}
+
+#infoStato{ 
+    display: none; 
+}
+
+/* Contatore degli ingranaggi raccolti */
+#contatoreIngranaggi{
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #cfbe86;
+    text-shadow: 2px 2px 0 #000;
+}
+
+/* Bottone per attivare il meccanismo finale */
+#bottoneAttivaNucleo{
+    cursor: pointer;
+
+    background: #3e2723;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+    padding: 0.8rem 2rem;
+
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #cfbe86;
+
+    border: 2px solid #cfbe86;
+
+    transition: all 0.2s;
+}
+
+/* Effetto hover sul bottone di attivazione */
+#bottoneAttivaNucleo:hover{
+    background: #4e342e;
+
+    transform: scale(1.05);
+}
+
+/* Messaggio di errore mostrato a schermo */
+#messaggioErroreNucleo{
+    position: absolute;
+
+    background: rgba(0, 0, 0, 0.9);
+    
+    width: 60%;
+    padding: 1rem;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff5252;
+    text-align: center;
+    
+    border: 2px solid #ff5252;
+
+    transform: translate(-50%, -50%);
+}
+
+/* Bottone circolare per tornare indietro */
+#bottoneRitorno3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+
+    background: #3e2723;
+
+    width: 3.5rem;
+    height: 3.5rem;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 200;
+    
+    font-size: 2rem;
+    color: #cfbe86;
+
+    border: 2px solid #8b6c42;
+    border-radius: 50%;
+}
+
+#messaggioErroreNucleo{
+    transition: opacity 0.3s ease;
+}
+
+#messaggioErroreNucleo.nascosto{
+    display: none; 
+}

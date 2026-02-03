@@ -1,0 +1,101 @@
+/* Impostazioni globali per html e body: occupano tutto lo schermo e rimuovono i margini di default */
+html, body {
+    box-sizing: border-box;
+
+    width: 100%; 
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principale della home page, diviso in una griglia verticale per gli sfondi (30% sopra, 70% sotto) */
+#schermataHome{
+    display: grid;
+    grid-template-rows: 30% 70%;
+
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+
+/* Parte superiore dello sfondo: contiene l'immagine statica background1 */
+#sfondoAlto{
+    display: block;
+
+    background-image: url("../img/homePage/background1.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; /* Copre interamente l'area mantenendo le proporzioni */
+
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+
+/* Parte inferiore dello sfondo: contiene l'immagine background2 e centra il contenuto (menu) */
+#sfondoBasso{
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+
+    background-image: url("../img/homePage/background2.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+
+/* Area che contiene i pulsanti di navigazione, disposti in colonna */
+#areaNavigazione{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    width: 34%;
+    height: auto;
+    max-height: 80%;
+    margin-top: 5%;
+    margin-left: 1%;
+    gap: 1.5rem; /* Spazio tra i pulsanti */
+}
+
+/* Stile dei link che fungono da pulsanti */
+a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    background-image: url("../img/common/buttonBackground.png"); /* Immagine di sfondo del pulsante */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    background-color: transparent;
+
+    width: 13rem;
+    height: 30%;
+    padding: 3%;
+    
+    font-size: 150%;
+    font-weight: bold;
+    color: #cfbe86; /* Colore del testo dorato */
+    text-decoration: none; /* Rimuove sottolineatura standard */
+    white-space: nowrap;
+
+    border: none;
+    border-radius: 0.5rem;
+
+    transition: transform 0.2s ease-in-out; /* Animazione fluida per l'hover */
+}
+
+/* Effetto al passaggio del mouse: ingrandisce leggermente il pulsante */
+a:hover{
+    transform: scale(1.05);
+}
